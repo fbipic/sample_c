@@ -1,5 +1,7 @@
 
-CPPUTEST_HOME = /home/fpic/Perforce/cpputest
+ifndef CPPUTEST_HOME
+	CPPUTEST_HOME = /home/fpic/Perforce/cpputest
+endif
 
 CXX = g++
 CPPFLAGS = -Wall -Wextra -g
