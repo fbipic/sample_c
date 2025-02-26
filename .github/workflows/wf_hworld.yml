@@ -1,0 +1,32 @@
+name: C/C++ CI
+
+on:
+  push:
+    branches: [ "master" ]
+  pull_request:
+    branches: [ "master" ]
+  workflow_dispatch:
+
+jobs:
+  hworld_build:
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v4
+    - name: hello world
+      run: echo "Hello world"
+      shell: bash
+    - name: make hworld
+      run: make
+    - name: run hworld
+      run: ./hworld
+    - name: make clean
+      run: make clean
+      
+  hworld_goodbye:
+    runs-on: ubuntu-latest
+    steps:
+      - name: goodbye world
+        run: echo "Goodbye world"
+        shell: bash
+
+
