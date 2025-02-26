@@ -16,14 +16,14 @@ jobs:
       run: echo "Hello world"
       shell: bash
     - name: configure hworld
-      run: cd code_c
+      run: ls;cd code_c
       shell: bash
     - name: make hworld
-      run: make
+      run: cd code_c;make
     - name: run hworld
-      run: ./hworld
+      run: ./code_c/hworld
     - name: make clean
-      run: make clean
+      run: cd code_c;make clean
       
   hworld_goodbye:
     runs-on: ubuntu-latest
