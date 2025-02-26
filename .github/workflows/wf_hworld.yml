@@ -16,7 +16,7 @@ jobs:
       run: echo "Hello world"
       shell: bash
     - name: configure hworld
-      run: cd sample_c
+      run: cd code_c
       shell: bash
     - name: make hworld
       run: make
