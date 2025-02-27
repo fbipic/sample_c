@@ -1,9 +1,14 @@
+/*******************************************************************************
+ *
+ * Copyright 2025 Fabio Piccolo
+ *
+ */
 
 #include <stdio.h>
 #include <stdlib.h> //malloc, memcpy
 #include <string.h> //memset
 
-#define HELLO		"Hello \"C\" world!"
+#define HELLO  "Hello \"C\" world!"
 
 char * hello_str()
 {

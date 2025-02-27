@@ -1,12 +1,19 @@
-#include "CppUTest/TestHarness.h"
+/*******************************************************************************
+ *
+ * Copyright 2025 Fabio Piccolo
+ *
+ */
 
+#include "CppUTest/TestHarness.h"
 
 TEST_GROUP(HelloTestGroup)
 {
   void setup()
-  {}
+  {
+  }
   void teardown()
-  {}
+  {
+  }
 };
 
 
