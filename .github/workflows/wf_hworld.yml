@@ -19,11 +19,12 @@ jobs:
       run: ls;cd code_c
       shell: bash
     - name: make hworld
-      run: cd code_c;make
+      working-directory: ${{github.workspace}}/code_c
+      run: make
     - name: run hworld
       run: ./code_c/hworld
     - name: make clean
-      run: cd code_c;make clean
+      run: make clean
       
   hworld_goodbye:
     runs-on: ubuntu-latest
