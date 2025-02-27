@@ -2,25 +2,25 @@ name: Hello world workflow for C/C++ code
 
 on:
   push:
-    branches: [ "master" ]
+    branches: ["master"]
   pull_request:
-    branches: [ "master" ]
+    branches: ["master"]
   workflow_dispatch:
 
 jobs:
   hworld_build:
     runs-on: ubuntu-latest
     steps:
-    - uses: actions/checkout@v4
-    - name: make hworld
-      working-directory: ${{github.workspace}}/code_c
-      run: make
-    - name: run hworld
-      working-directory: ${{github.workspace}}/code_c    
-      run: ./hworld
-    - name: make clean
-      working-directory: ${{github.workspace}}/code_c
-      run: make clean
+      - uses: actions/checkout@v4
+      - name: make hworld
+        working-directory: ${{github.workspace}}/code_c
+        run: make
+      - name: run hworld
+        working-directory: ${{github.workspace}}/code_c    
+        run: ./hworld
+      - name: make clean
+        working-directory: ${{github.workspace}}/code_c
+        run: make clean
 
   hworld_lint:
     runs-on: ubuntu-latest
@@ -35,7 +35,6 @@ jobs:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
-
   hworld_hi:
     runs-on: ubuntu-latest
     steps:
@@ -50,5 +49,3 @@ jobs:
       - name: goodbye world
         run: echo "Goodbye world"
         shell: bash
-
-
