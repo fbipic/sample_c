@@ -12,19 +12,20 @@ jobs:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v4
-    - name: hello world
-      run: echo "Hello world"
-      shell: bash
-    - name: configure hworld
-      run: ls;cd code_c
-      shell: bash
+    - working-directory: ${{github.workspace}}/code_c
     - name: make hworld
-      working-directory: ${{github.workspace}}/code_c
       run: make
     - name: run hworld
-      run: ./code_c/hworld
+      run: ./hworld
     - name: make clean
       run: make clean
+
+  hworld_hi:
+    runs-on: ubuntu-latest
+    steps:
+      - name: hi world
+        run: echo "Hi world"
+        shell: bash
       
   hworld_goodbye:
     runs-on: ubuntu-latest
