@@ -35,7 +35,6 @@ jobs:
       - name: Run lint
         uses: super-linter/super-linter@v7.3.0
         env:
-          DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
     
   hworld_hi:
