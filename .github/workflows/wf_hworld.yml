@@ -28,7 +28,7 @@ jobs:
       - name: Checkout code
         uses: action/checkout@v4
       - name: Run lint
-        uses: github/super-linter@v3
+        uses: github/super-linter@v7.3.0
         env:
           DEFAULT_BRANCH: main
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
