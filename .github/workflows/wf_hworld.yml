@@ -25,7 +25,10 @@ jobs:
   hworld_lint:
     runs-on: ubuntu-latest
     steps:
-      - uses: action/checkout@v4
+      - name: Checkout Code
+        uses: actions/checkout@v3
+        with:
+          fetch-depth: 0
       - name: Run lint
         uses: github/super-linter@v4
         env:
