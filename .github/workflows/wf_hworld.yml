@@ -8,6 +8,9 @@ on:
     branches: ["master"]
   workflow_dispatch:
 
+#Fix checkov permission complain
+permissions: read-all
+
 jobs:
   hworld_build:
     runs-on: ubuntu-latest
