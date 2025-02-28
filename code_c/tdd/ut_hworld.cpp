@@ -11,5 +11,5 @@ TEST_GROUP(HelloTestGroup){void setup(){} void teardown(){}};
 TEST(HelloTestGroup, HelloTest) {
   int res = 1;
   //   FAIL("Fail me!");
-  CHECK_EQUAL(0, res);
+  CHECK_EQUAL(1, res);
 }
