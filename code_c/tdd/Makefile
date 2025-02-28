@@ -1,13 +1,13 @@
 
 ifndef CPPUTEST_HOME
-	CPPUTEST_HOME = /home/fpic/Perforce/cpputest
+	#CPPUTEST_HOME = /home/fpic/Perforce/cpputest
+	CPPUTEST_HOME = /usr/lib/cpputest
 endif
 
 CXX = g++
 CPPFLAGS = -Wall -Wextra -g
-CPPFLAGS += -I$(CPPUTEST_HOME)/include
-LD_LIBRARIES = -L$(CPPUTEST_HOME)/cpputest_build/lib -lCppUTest -lCppUTestExt
-#LD_LIBRARIES = -L$(CPPUTEST_HOME)/lib -lCppUTest -lCppUTestExt
+CPPFLAGS += -I$(CPPUTEST_HOME)
+LD_LIBRARIES = -lCppUTest -lCppUTestExt
 
 all: ut_hworld
 #	$(CXX) $(CPPFLAGS) -o runtest ut_main.cpp ut_hworld.cpp $(LD_LIBRARIES)
