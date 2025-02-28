@@ -2,13 +2,13 @@
  *
  * Copyright 2025 Fabio Piccolo
  *
- */
+ ***************************************/
 
-#include <stdio.h>   // printf
-#include <stdlib.h>  // malloc, memcpy
-#include <string.h>  // memset
+#include <stdio.h>  // printf
+#include <stdlib.h> // malloc, memcpy
+#include <string.h> // memset
 
-#define HELLO  "Hello \"C\" world!"
+#define HELLO "Hello \"C\" world!"
 
 static char *hello_str(void) {
   char *p_str = NULL;
