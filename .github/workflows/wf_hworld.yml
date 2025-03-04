@@ -26,6 +26,21 @@ jobs:
         working-directory: ${{github.workspace}}/code_c
         run: make clean
 
+  hworld_tdd:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+      - name: Install cpputest
+        run: sudo apt install -y cpputest
+      - name: make test
+        working-directory: ${{github.workspace}}/code_c/tdd
+        run: make
+      - name: run test
+        working-directory: ${{github.workspace}}/code_c/tdd
+        run: ./runtest
+
   hworld_lint:
     runs-on: ubuntu-latest
     
@@ -43,7 +58,7 @@ jobs:
           # list of files that changed across commits
           fetch-depth: 0
       - name: Run lint
-        uses: super-linter/super-linter@v7.3.0
+        uses: super-linter/super-linter@v7.1.0
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           FIX_MARKDOWN_PRETTIER: true
