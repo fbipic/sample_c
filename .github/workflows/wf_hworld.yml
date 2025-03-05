@@ -14,16 +14,16 @@ permissions: read-all
 jobs:
   hworld_build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}/code_c      
     steps:
       - uses: actions/checkout@v4
       - name: make hworld
-        working-directory: ${{github.workspace}}/code_c
         run: make
       - name: run hworld
-        working-directory: ${{github.workspace}}/code_c    
         run: ./hworld
       - name: make clean
-        working-directory: ${{github.workspace}}/code_c
         run: make clean
 
   hworld_lint:
