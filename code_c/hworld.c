@@ -4,9 +4,12 @@
  *
  ***************************************/
 
-#include <stdio.h>  // printf
-#include <stdlib.h> // malloc, memcpy
-#include <string.h> // memset
+// printf
+#include <stdio.h>
+// malloc, memcpy
+#include <stdlib.h>  
+// memset
+#include <string.h>  
 
 #define HELLO "Hello \"C\" world!"
 
