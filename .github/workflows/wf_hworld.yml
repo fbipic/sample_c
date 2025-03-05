@@ -28,17 +28,18 @@ jobs:
 
   hworld_tdd:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}/code_c/tdd
     steps:
       - uses: actions/checkout@v4
         with:
           submodules: recursive
       - name: Install cpputest
         run: sudo apt install -y cpputest
-      - name: make test
-        working-directory: ${{github.workspace}}/code_c/tdd
+      - name: make test     
         run: make
       - name: run test
-        working-directory: ${{github.workspace}}/code_c/tdd
         run: ./runtest
 
   hworld_lint:
