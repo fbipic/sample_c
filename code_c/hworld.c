@@ -7,9 +7,9 @@
 // printf
 #include <stdio.h>
 // malloc, memcpy
-#include <stdlib.h>  
+#include <stdlib.h>
 // memset
-#include <string.h>  
+#include <string.h>
 
 #define HELLO "Hello \"C\" world!"
 
