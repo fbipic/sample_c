@@ -12,7 +12,7 @@ Created some basic code with python and pytest.
 
 ## Useful link
 
-[Python](https://www.python.org/)<br>
-[Python resources](https://pypi.org/)<br>
-[Online python learning](https://www.learnpython.org)<br>
-[Pytest](https://docs.pytest.org/en/stable/getting-started.html)
+- [Python](https://www.python.org/)
+- [Python resources](https://pypi.org/)
+- [Online python learning](https://www.learnpython.org)
+- [Pytest](https://docs.pytest.org/en/stable/getting-started.html)
