@@ -2,6 +2,7 @@
 
 
 def say_hello(obj="World"):
+    """Function that return a greeting message."""
     return "Hello, " + obj + "!"
 
 
