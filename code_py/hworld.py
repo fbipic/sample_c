@@ -1,5 +1,6 @@
 """Module providing basic print function."""
 
+
 def say_hello(obj="World"):
     return "Hello, " + obj + "!"
 
