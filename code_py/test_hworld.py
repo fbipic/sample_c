@@ -1,6 +1,5 @@
 """Module providing function to be tested."""
 
-
 from hworld import say_hello
 
 
