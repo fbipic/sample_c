@@ -1,12 +1,13 @@
-import sys
-sys.path.append('../')
+"""Module providing function to be tested."""
 
+import sys
+sys.path.append("../")
 from hworld import say_hello
 
 
 def test_hworld_default():
-    assert say_hello() == 'Hello, World!'
+    assert say_hello() == "Hello, World!"
 
 
 def test_hworld_custom():
-    assert say_hello('custom') == 'Hello, custom!'
+    assert say_hello("custom") == "Hello, custom!"
