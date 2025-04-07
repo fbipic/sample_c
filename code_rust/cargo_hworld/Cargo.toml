@@ -1,0 +1,7 @@
+[package]
+name = "cargo_hworld"
+version = "0.1.0"
+authors = ["Fabio Piccolo fbipic@yahoo.com"]
+edition = "2024"
+
+[dependencies]
