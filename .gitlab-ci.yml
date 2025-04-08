@@ -17,37 +17,70 @@
 # https://gitlab.com/gitlab-org/gitlab/-/blob/master/lib/gitlab/ci/templates/Getting-Started.gitlab-ci.yml
 
 default:
-  tags: [linux]
+  tags: [docker]
 
 stages:          # List of stages for jobs, and their order of execution
   - build
   - test
   - deploy
 
-build-job:       # This job runs in the build stage, which runs first.
+build-make:       # This job runs in the build stage, which runs first.
   stage: build
+  image: gcc:latest  # This job uses the latest gcc image.
   script:
     - echo "Compiling the code..."
     - echo "Hello, $GITLAB_USER_LOGIN"
+    - cd code_c
+    - make
     - echo "Compile complete."
+  artifacts:
+    paths:
+      - code_c/hworld
+
+build-cmake:       # This job runs in the build stage, which runs first.
+  stage: build
+  image: rikorose/gcc-cmake:latest  # This job uses the latest cmake image.
+  script:
+    - echo "Compiling the code..."
+    - echo "Hello, $GITLAB_USER_LOGIN"
+    - mkdir build 
+    - cd build
+    - cmake ../code_c
+    - cmake --build .
+    - echo "Compile complete."
+  artifacts:
+    paths:
+      - build/hworld
 
 unit-test-job:   # This job runs in the test stage.
   stage: test    # It only starts when the job in the build stage completes successfully.
+  image: tafthorne/clang-cpputest-gcc:latest # This job uses the latest cpputest image.
   script:
-    - echo "Running unit tests... This will take about 60 seconds."
-    - sleep 60
-    - echo "Code coverage is 90%"
+    - echo "Running unit tests..."
+    - cd code_c/tdd
+    - make
+    - ./runtest
 
 lint-test-job:   # This job also runs in the test stage.
   stage: test    # It can run at the same time as unit-test-job (in parallel).
+  image: github/super-linter:latest # This job uses the latest super-linter image.
+  variables:
+    RUN_LOCAL: "true"
+    DEFAULT_WORKSPACE: $CI_PROJECT_DIR
   script:
-    - echo "Linting code... This will take about 10 seconds."
-    - sleep 10
+    - echo "Linting code..."
+    - /action/lib/linter.sh
     - echo "No lint issues found."
 
 deploy-job:      # This job runs in the deploy stage.
   stage: deploy  # It only runs when *both* jobs in the test stage complete successfully.
   environment: production
+  needs:
+    - job: build-make
+      artifacts: true
   script:
     - echo "Deploying application..."
     - echo "Application successfully deployed."
+  artifacts:
+    paths:
+      - code_c/hworld
