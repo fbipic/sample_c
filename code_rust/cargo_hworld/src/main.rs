@@ -1,7 +1,6 @@
 fn print_operation() {
     let a = 10;
     let b = 3;
-    let mut c = 0;
     println!("a+b={}", a+b);
     println!("a-b={}", a-b);
     println!("a*b={}", a*b);
@@ -13,6 +12,17 @@ fn print_operation() {
     // Use as for casting integer into fload otherwise operation will fail
     println!("a_f/b_f={} a_f%b_f1={}", a_f as f64 /b_f, a_f as f64 %b_f);
 
+    //Display with precision decided 
+    // after with .3
+    // before with 8 spaces
+    println!("b_f={:8.3}", b_f);
+
+    print!("a_f={} b_f={} ",a_f, b_f); //Print without carriage return
+    // Display with 0 in front
+    println!("a_f/b_f={:08.3}", a_f/b_f);
+
+    //Using positinal index to print multiple time same variables
+    println!("a ={0} b={1} => {0}/{1}={2:.3}", a, b, (a as f64/ b as f64));
 }
 
 fn print_float() {
