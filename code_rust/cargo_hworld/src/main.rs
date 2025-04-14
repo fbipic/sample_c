@@ -107,6 +107,26 @@ fn print_comparison (){
     println!("a < b = {}", a<b);
 }
 
+fn print_chars() {
+    //Char is stored in 4 bytes as unicode
+    let letter = 'a';
+    let number  = '1';
+    let finger = '\u{261D}';
+    println!("{}\t{}\t{}", letter, number, finger);
+}
+
+fn print_average() {
+    let a = 13;
+    let b = 2.3;
+    let c: f32 = 120.0;
+
+    //Challenge. If used f32 precision is not enough to satisty assert
+    let average = (a as f64 + b + c as f64) / 3 as f64;
+
+    assert_eq!(average, 45.1);
+    println!("Test passed")
+}
+
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
@@ -116,4 +136,8 @@ fn main() {
     print_bitwise();
     print_boolean();
     print_comparison();
+    print_chars();
+
+    //Challenge
+    print_average();
 }
