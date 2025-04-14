@@ -94,6 +94,19 @@ fn print_boolean () {
     //c = (a ^ b) && panic!(); //Need to evaluate also second part then crash    
 }
 
+fn print_comparison (){
+    //let a = 2;
+    //let b = 1;
+    //Works also for boolean
+    let a = true;
+    let b = false;
+    //Cannot be using different data types
+    println!("a={} b={}", a, b);
+    println!("a = b = {}", a==b);
+    println!("a > b = {}", a>b);
+    println!("a < b = {}", a<b);
+}
+
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
@@ -102,4 +115,5 @@ fn main() {
     print_operation();
     print_bitwise();
     print_boolean();
+    print_comparison();
 }
