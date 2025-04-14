@@ -75,6 +75,25 @@ fn print_bitwise() {
 
 }
 
+fn print_boolean () {
+    let a = true;
+    let b = false;
+    println!("a is {} and b is {}", a, b);
+    println!("NOT a is {}", !a);
+    println!("a AND b is {}", a & b);
+    println!("a OR b is {}", a | b);
+    println!("a XOR b {}", a ^ b);
+
+    let mut c = (a ^ b) | (a & b);
+    println!("(a ^ b) | (a & b) = {} ", c);
+
+    c = (a ^ b) || (a & b); //Ignore=optimization right side if first expression is true
+    println!("(a ^ b) || (a & b) = {} ", c);
+    c = (a ^ b) || panic!(); //macro that cause program to exit immediately
+    println!("(a ^ b) || (a & b) = {} ", c);
+    //c = (a ^ b) && panic!(); //Need to evaluate also second part then crash    
+}
+
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
@@ -82,4 +101,5 @@ fn main() {
     print_float();
     print_operation();
     print_bitwise();
+    print_boolean();
 }
