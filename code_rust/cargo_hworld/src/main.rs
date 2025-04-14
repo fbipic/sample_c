@@ -49,13 +49,12 @@ fn print_bitwise() {
     println!("value = {} -> {0:08b}", value); //display 0 and 8 bit
 
     //Using NOT operator
-    let mut val_n = value;
-    val_n = !value;
-    println!("val_n = {:3} -> {0:08b}", val_n);
-
     let mut val_m;
+    val_m = !value;
+    println!("val_n = {:3} -> {0:08b}", val_m);
+
     //Using OR operator
-    val_m = val_n & 0b1111_0111;
+    val_m = val_m & 0b1111_0111;
     println!("val_a = {:3} -> {0:08b}", val_m);
     println!("bit 6 = {:3}", val_m & 0b0010_0000);
 
