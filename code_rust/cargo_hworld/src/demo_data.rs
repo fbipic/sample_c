@@ -145,6 +145,18 @@ fn print_array() {
     */
 }
 
+fn print_multi_dimension_array() {
+    let d2_array = [[1, 2, 3],
+                    [4,5,6]];
+    let number = d2_array[0][1];
+    println!("number = {}", number);
+
+    let d3_array = [[[0;100]; 20]; 5];
+    let element = d3_array[0][1][2];
+    println!("element = {}", element);
+}
+
+
 pub fn run(name: &str) {
     println!("Welcome to print_demo {}!!!", String::from(name));
 
@@ -160,4 +172,5 @@ pub fn run(name: &str) {
     print_average();
 
     print_array();
+    print_multi_dimension_array();
 }
