@@ -156,6 +156,17 @@ fn print_multi_dimension_array() {
     println!("element = {}", element);
 }
 
+fn print_tuples()
+{
+    let mut stuff = ( 3, 3.14, 'x');
+    stuff.0 += 3;
+    println!("First item {}", stuff.0 );
+
+    //Assign stuff values to variables
+    let (a, b, c) = stuff;
+    println!("a={} b={:.3} c={}", a, b, c)
+}
+
 
 pub fn run(name: &str) {
     println!("Welcome to print_demo {}!!!", String::from(name));
@@ -173,4 +184,5 @@ pub fn run(name: &str) {
 
     print_array();
     print_multi_dimension_array();
+    print_tuples();
 }
