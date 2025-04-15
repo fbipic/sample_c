@@ -9,7 +9,7 @@ fn print_operation() {
     //Use float and compare with latest one
     let a_f = 10;
     let b_f = 3.0;
-    // Use as for casting integer into fload otherwise operation will fail
+    // Use as for casting integer into float otherwise operation will fail
     println!("a_f/b_f={} a_f%b_f1={}", a_f as f64 /b_f, a_f as f64 %b_f);
 
     //Display with precision decided 
@@ -21,7 +21,7 @@ fn print_operation() {
     // Display with 0 in front
     println!("a_f/b_f={:08.3}", a_f as f64/b_f);
 
-    //Using positinal index to print multiple time same variables
+    //Using positional index to print multiple time same variables
     println!("a ={0} b={1} => {0}/{1}={2:.3}", a, b, (a as f64/ b as f64));
 }
 
