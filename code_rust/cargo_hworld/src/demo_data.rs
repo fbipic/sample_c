@@ -169,7 +169,7 @@ fn print_tuples()
 
 
 pub fn run(name: &str) {
-    println!("Welcome to print_demo {}!!!", String::from(name));
+    println!("==>Welcome to demo_data {}!!!", String::from(name));
 
     print_integer();
     print_float();
