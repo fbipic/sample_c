@@ -120,11 +120,29 @@ fn print_average() {
     let b = 2.3;
     let c: f32 = 120.0;
 
-    //Challenge. If used f32 precision is not enough to satisty assert
+    //Challenge. If used f32 precision is not enough to satisfy assert
     let average = (a as f64 + b + c as f64) / 3 as f64;
 
     assert_eq!(average, 45.1);
     println!("Test passed")
+}
+
+fn print_array() {
+    let mut letters = ['a', 'b', 'c'];
+    letters[1] = 'x';
+    println!("letters=[{}, {}, {}]", letters[0], letters[1], letters[2]);
+
+    //Declare array with type and number of element without initialization
+    //If we try access an element, it return error in build state
+    let numbers: [i32;5];
+    numbers = [0; 5]; //Repeated expression = [0,0,0,0,0]
+    println!("last element = {}", numbers[4]);
+    let index = numbers.len();
+    println!("last element at index {}", index);
+    /*
+    Program fail during running time prevent access to invalid memory
+    println!("last element at index {} = {}", index, numbers[index]);
+    */
 }
 
 pub fn run(name: &str) {
@@ -140,4 +158,6 @@ pub fn run(name: &str) {
 
     //Challenge
     print_average();
+
+    print_array();
 }

@@ -5,6 +5,6 @@ mod demo_data;
 fn main() {
     println!("Hello, RUST world with CARGO!");
 
-    let user = "Jose";
+    let user = "user";
     demo_data::run(user);
 }
