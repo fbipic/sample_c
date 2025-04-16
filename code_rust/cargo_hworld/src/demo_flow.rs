@@ -9,6 +9,7 @@ pub fn run(name: &str){
     flow_loop();
     flow_while();
     flow_for();
+    nested_loop();
 }
 
 fn conditional_flow(x: bool){
@@ -127,4 +128,28 @@ fn flow_for() {
         print!("{} ", number);
     }
     println!("");
+}
+
+fn nested_loop() {
+    let matrix = [[1, 2, 3],
+                                 [4, 5, 6],
+                                 [7, 8, 9]];
+    for (row_index, row) in matrix.iter().enumerate(){
+        for (col_index, number) in row.iter().enumerate(){
+            //println!("row={} element[{}]={}", row_index, col_index, number);
+            print!("{}\t", number);
+        }
+        println!();
+    }
+
+    let mut matrix_mut = [[1, 2, 3],
+                                         [4, 5, 6],
+                                         [7, 8, 9]];
+    for row_m in matrix_mut.iter_mut(){
+        for number_m in row_m.iter_mut() {
+            *number_m += 10; //Require dereferencing mutable iterator
+            print!("{}\t", number_m);
+        }
+        println!();
+    }
 }
