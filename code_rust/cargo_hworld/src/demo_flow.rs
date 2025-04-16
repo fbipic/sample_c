@@ -8,6 +8,7 @@ pub fn run(name: &str){
 
     flow_loop();
     flow_while();
+    flow_for();
 }
 
 fn conditional_flow(x: bool){
@@ -103,5 +104,27 @@ fn flow_while() {
         count += 1;
 
     }
+}
 
+fn flow_for() {
+    let message = ['h', 'e', 'l', 'l', 'o'];
+    //message is converted into iterator
+    for item in message{
+        print!("{}", item);
+    }
+    println!(" :)");
+
+    //Get tuple with also index and require reference for exit from loop
+    for (index, &item) in message.iter().enumerate(){ 
+        println!("item[{}]={}", index, item);
+        if item == 'e' {
+            break;
+        }
+    }
+
+    //Loop using number
+    for number in 0..5 {
+        print!("{} ", number);
+    }
+    println!("");
 }
