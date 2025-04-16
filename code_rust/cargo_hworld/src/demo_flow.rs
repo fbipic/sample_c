@@ -7,6 +7,7 @@ pub fn run(name: &str){
     conditional_assignment(true);
 
     flow_loop();
+    flow_while();
 }
 
 fn conditional_flow(x: bool){
@@ -84,5 +85,23 @@ fn flow_loop(){
         }
     };
     println!("loop exit with result = {}", result);
+
+}
+
+fn flow_while() {
+    let mut count = 0;
+    while count < 10{
+        count += 1;
+        print!("{} ", count);
+    }
+    println!("I come");
+
+    let letters = ['a', 'b', 'c'];
+    count = 0;
+    while count < letters.len(){
+        println!("letter={} ", letters[count]);
+        count += 1;
+
+    }
 
 }
