@@ -5,6 +5,7 @@ pub fn run(name: &str){
     shadow_example();
     string_example();
     ownership_example();
+    transfer_ownership_example();
 }
 
 //Variable lives into curly brackets 
@@ -66,4 +67,37 @@ fn ownership_example(){
     }
     println!("outer_planet is {}", outer_planet);
 
+}
+
+fn transfer_ownership_example()
+{
+    let rocket_fuel = 1;
+    processing_fuel(rocket_fuel);
+    println!("rocket_fuel = {}", rocket_fuel);
+
+    let rocket_fuel_s = String::from("RP-1");
+    //Should add clone here otherwise ownership is transferred to propeller_s variable
+    //and this will be destroyed and also data after function execution
+    processing_fuel_s(rocket_fuel_s.clone());
+    println!("rocket_fuel_s = {}", rocket_fuel_s);
+
+    //Use same string also in function returning a value
+    //Use shadow to overwrite previous variable 
+    let rocket_fuel_s = processing_fuel_r(rocket_fuel_s);
+    println!("rocket_fuel_s = {}", rocket_fuel_s);
+}
+
+//propeller is a stack copy of initial value
+fn processing_fuel(mut propeller: i32) {
+    propeller += 1;
+    println!("propeller = {}", propeller);
+}
+
+fn processing_fuel_s(propeller_s: String) {
+    println!("propeller = {}", propeller_s);
+}
+
+fn processing_fuel_r(propeller_s: String) -> String{
+    println!("propeller = {}", propeller_s);
+    propeller_s
 }
