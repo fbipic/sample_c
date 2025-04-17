@@ -10,6 +10,8 @@ pub fn run(name: &str){
     flow_while();
     flow_for();
     nested_loop();
+
+    flow_challenge();
 }
 
 fn conditional_flow(x: bool){
@@ -136,8 +138,8 @@ fn nested_loop() {
                                  [7, 8, 9]];
     for (row_index, row) in matrix.iter().enumerate(){
         for (col_index, number) in row.iter().enumerate(){
-            //println!("row={} element[{}]={}", row_index, col_index, number);
-            print!("{}\t", number);
+            println!("row={} element[{}]={}", row_index, col_index, number);
+            //print!("{}\t", number);
         }
         println!();
     }
@@ -147,9 +149,39 @@ fn nested_loop() {
                                          [7, 8, 9]];
     for row_m in matrix_mut.iter_mut(){
         for number_m in row_m.iter_mut() {
-            *number_m += 10; //Require dereferencing mutable iterator
+            *number_m += 10; //Require dereferencing mutable iterator, highlighted by compilers
             print!("{}\t", number_m);
         }
         println!();
     }
+}
+
+fn flow_challenge() {
+    let numbers = [1, 9, -2, 0, 23, 20, -7, 13, 37, 20, 56, -18, 20, 3];
+    let mut max: i32;
+    let mut min: i32;
+    let mut mean: f64;
+
+    min = numbers[0];
+    max = numbers[0];
+    mean = 0.0;
+    for value in numbers {
+        mean += value as f64;
+/*         
+        if min > value { 
+            min = value;
+        }
+        if max < value {
+            max = value;
+        }
+*/
+        min = if min > value { value} else { min };
+        max = if max < value { value} else { max };
+    }
+    mean = mean / numbers.len() as f64;
+
+    assert_eq!(max, 56);
+    assert_eq!(min, -18);
+    assert_eq!(mean, 12.5);
+    println!("Tests passed!");
 }
