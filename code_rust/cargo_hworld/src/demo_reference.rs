@@ -2,6 +2,7 @@ pub fn run(name: &str){
     println!("==>Welcome to demo_reference {}!!!", String::from(name));
     borrow_ownership();
     borrow_mut_ownership();
+    dangling_reference_example();
 }
 
 fn borrow_ownership(){
@@ -37,4 +38,22 @@ fn processing_fuel_mut(propeller: &mut String) -> usize {
     propeller.push_str(" is highly flammable!");
     let length = propeller.len();
     length
+}
+
+fn dangling_reference_example(){
+    let rocket_fuel = produce_fuel();
+    println!("rocket_fuel = {}", rocket_fuel);  
+}
+
+/* 
+fn produce_fuel () -> &String {
+    //Data and stack are no longer available after function is executed and this cause an lifetime error
+    let new_fuel = String::from("RP-1");
+    &new_fuel
+}
+*/
+fn produce_fuel () -> String {
+    //Issue in dangling can be resolved passing ownership
+    let new_fuel = String::from("RP-1");
+    new_fuel
 }
