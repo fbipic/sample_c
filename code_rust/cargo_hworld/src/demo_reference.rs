@@ -3,6 +3,7 @@ pub fn run(name: &str){
     borrow_ownership();
     borrow_mut_ownership();
     dangling_reference_example();
+    slice_example();
 }
 
 fn borrow_ownership(){
@@ -56,4 +57,21 @@ fn produce_fuel () -> String {
     //Issue in dangling can be resolved passing ownership
     let new_fuel = String::from("RP-1");
     new_fuel
+}
+
+fn slice_example() {
+    //slice= contiguous section of a collection, without taking ownership
+    let message = String::from("Greetings from Earth");
+    println!("message={}", message);
+
+    //let last_word = &message[15..15+5]; //Index of earth + length
+    //let last_word = &message[15..15+50]; //Cause crash on runtime
+    let last_word = &message[15..]; //Index of earth until end of string
+    //Char is in utf-8 and it can occupy multiple byte, so can be dangerous to use is as it is
+    println!("last_world={}", last_word);
+
+    let planets = [1,2,3,4,5,6,7,8,9];
+    let inner_planet: &[i32] = &planets[..4];
+    println!("inner_planet = {:?}", inner_planet);
+
 }
