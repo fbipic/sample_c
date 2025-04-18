@@ -10,6 +10,8 @@ mod demo_flow;
 #[path = "./demo_ownership.rs"]
 mod demo_ownership;
 
+#[path = "./demo_reference.rs"]
+mod demo_reference;
 
 // Main program
 fn main() {
@@ -21,4 +23,5 @@ fn main() {
     demo_function::run(user);
     demo_flow::run(user);
     demo_ownership::run(user);
+    demo_reference::run(user);
 }
