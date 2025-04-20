@@ -13,6 +13,10 @@ mod demo_ownership;
 #[path = "./demo_reference.rs"]
 mod demo_reference;
 
+#[path = "./demo_modules.rs"]
+mod demo_modules;
+
+
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
@@ -24,4 +28,5 @@ fn main() {
     demo_flow::run(user);
     demo_ownership::run(user);
     demo_reference::run(user);
+    demo_modules::run(user);
 }
