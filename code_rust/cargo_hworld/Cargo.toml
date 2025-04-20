@@ -5,3 +5,4 @@ authors = ["Fabio Piccolo fbipic@yahoo.com"]
 edition = "2024"
 
 [dependencies]
+rand = "0.9.1"
