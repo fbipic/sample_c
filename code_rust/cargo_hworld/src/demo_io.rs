@@ -56,7 +56,8 @@ fn write_file_example() {
 
 fn roster_challenge() {
     if env::args().len() != 2 {
-        println!("Two arguments required!")
+        println!("Two arguments required!");
+        return;
     }
 
     let file_path = env::args().nth(1).unwrap();
