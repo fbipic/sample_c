@@ -4,6 +4,7 @@ pub fn run(name: &str){
     struct_expanded_example();
     struct_method_example();
     associated_function_example();
+    tuple_struct_example();
 }
 
 #[derive(Debug)] //Added to allow println macro to print structure in debug mode
@@ -82,12 +83,30 @@ fn struct_method_example() {
 }
 
 fn associated_function_example() {
-    let mut vehicle1 = Shuttle::new("Endevour");
-    let mut vehicle2 = Shuttle::new("Discovery");
+    let vehicle1 = Shuttle::new("Endeavour");
+    let vehicle2 = Shuttle::new("Discovery");
 
     let vehicle_name = vehicle1.get_name();
     println!("vehicle1_name={}", vehicle_name);
 
     let vehicle_name = vehicle2.get_name();
     println!("vehicle2_name={}", vehicle_name);
+}
+
+#[derive(Debug)] //Added to allow println macro to print structure in debug mode
+struct Color(u8, u8, u8); //RGB
+struct Point(u8, u8, u8); //XYZ
+
+fn get_y(p: Point) -> u8 {
+    p.1
+}
+
+fn tuple_struct_example() {
+    let red = Color (255, 0, 0);
+    println!("First value in red {}", red.0);
+    println!("red={:?}", red);
+
+    let coord = Point (3,4,5);
+    let y = get_y(coord);
+    println!("y={}", y);
 }
