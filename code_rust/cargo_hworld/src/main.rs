@@ -1,3 +1,5 @@
+use std::env; //Include to use arguments
+
 #[path = "./demo_data.rs"]
 mod demo_data;
 
@@ -16,11 +18,18 @@ mod demo_reference;
 #[path = "./demo_modules.rs"]
 mod demo_modules;
 
+#[path = "./demo_io.rs"]
+mod demo_io;
 
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
 
+/* 
+    for (index, arg) in env::args().enumerate() {
+        println!("arg[{}] = {}", index, arg);
+    }
+*/
     let user = "user";
     demo_data::run(user);
 
@@ -29,4 +38,5 @@ fn main() {
     demo_ownership::run(user);
     demo_reference::run(user);
     demo_modules::run(user);
+    demo_io::run(user);
 }

@@ -4,10 +4,10 @@ use rand::{prelude::*, rng}; //Load all prelude functions
 
 pub fn run(name: &str){
     println!("==>Welcome to demo_reference {}!!!", String::from(name));
-    io_example();
+    //io_example(); //Commented out for speed
     rand_example();
 
-    challenge_guessing_game();
+    //challenge_guessing_game(); //Commented out for speed
 }
 
 fn io_example() {
