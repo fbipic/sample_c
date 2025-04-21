@@ -9,6 +9,8 @@ pub fn run(name: &str){
     cmd_line_args_example();
     read_file_example();
     write_file_example();
+
+    rooster_challenge();
 }
 
 fn cmd_line_args_example() {
@@ -50,4 +52,27 @@ fn write_file_example() {
 
     let mut file = fs::OpenOptions::new().append(true).open("planets.txt").unwrap();
     file.write(b"\nPluto");
+}
+
+fn rooster_challenge() {
+    if env::args().len() != 2 {
+        println!("Two arguments required!")
+    }
+
+    let file_path = env::args().nth(1).unwrap();
+    println!("file={}", file_path);
+
+    let astronaut = env::args().nth(2).unwrap();
+    println!("Search astronauts={} in file={}", astronaut, file_path);
+
+    let mut not_found= true;
+    for (index, line) in fs::read_to_string(file_path).unwrap().lines().enumerate(){
+        if line == astronaut { 
+            println!("Find astronauts {} on line {}", astronaut, index);
+            not_found = false;
+            break; 
+        }
+    }
+    if not_found { println!("{} did not walk on Moon...", astronaut); }
+
 }
