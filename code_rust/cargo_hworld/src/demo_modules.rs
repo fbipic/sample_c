@@ -1,6 +1,6 @@
 use std::io; //Declaration to use i/o modules
 //use rand; //Use random library available from crates.io
-use rand::{prelude::*, thread_rng}; //Load all prelude functions
+use rand::{prelude::*, rng}; //Load all prelude functions
 
 pub fn run(name: &str){
     println!("==>Welcome to demo_reference {}!!!", String::from(name));
@@ -27,13 +27,13 @@ fn rand_example()
     let number= rand::random::<f64>();
     println!("Random number = {:.3}", number);
 
-    let number = thread_rng().gen_range(1..11);
+    let number = rng().random_range(1..11);
     println!("Generate in range = {:.3}", number);
 }
 
 fn challenge_guessing_game()
 {
-    let rand_num = thread_rng().gen_range(1..101);
+    let rand_num = rng().random_range(1..101);
     //println!("Generate in range = {}", rand_num);
     let mut win = false;
     for i in 0..2 {
