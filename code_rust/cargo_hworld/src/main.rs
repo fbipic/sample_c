@@ -21,6 +21,9 @@ mod demo_modules;
 #[path = "./demo_io.rs"]
 mod demo_io;
 
+#[path = "./demo_struct.rs"]
+mod demo_struct;
+
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
@@ -39,4 +42,5 @@ fn main() {
     demo_reference::run(user);
     demo_modules::run(user);
     demo_io::run(user);
+    demo_struct::run(user);
 }
