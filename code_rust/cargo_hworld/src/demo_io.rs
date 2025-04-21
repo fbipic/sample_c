@@ -10,7 +10,7 @@ pub fn run(name: &str){
     read_file_example();
     write_file_example();
 
-    rooster_challenge();
+    roster_challenge();
 }
 
 fn cmd_line_args_example() {
@@ -54,7 +54,7 @@ fn write_file_example() {
     file.write(b"\nPluto");
 }
 
-fn rooster_challenge() {
+fn roster_challenge() {
     if env::args().len() != 2 {
         println!("Two arguments required!")
     }
