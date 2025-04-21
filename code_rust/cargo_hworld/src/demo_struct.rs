@@ -2,6 +2,7 @@ pub fn run(name: &str){
     println!("==>Welcome to demo_struct {}!!!", String::from(name));
     struct_example();
     struct_expanded_example();
+    struct_method_example();
 }
 
 #[derive(Debug)] //Added to allow println macro to print structure in debug mode
@@ -9,7 +10,16 @@ pub fn run(name: &str){
 struct Shuttle {
     name: String,
     crew_size: u8,
-    propellant: f32
+    propellant: f64
+}
+
+impl Shuttle {
+    fn get_name(&self) -> &str {
+        &self.name
+    }
+    fn add_fuel(&mut self, gallons: f64){
+      self.propellant += gallons;
+    }
 }
 
 fn struct_example() {
@@ -46,4 +56,19 @@ fn struct_expanded_example() {
     println!("vehicle1={:?}", vehicle1);
     println!("vehicle2={:?}", vehicle2);
     println!("vehicle3={:?}", vehicle3);
+}
+
+fn struct_method_example() {
+    let mut vehicle = Shuttle{
+        name: String::from("Endeavour"),
+        crew_size: 7,
+        propellant: 85697.0
+    };
+   
+    let vehicle_name = vehicle.get_name();
+    println!("vehicle_name={}", vehicle_name);
+
+    println!("propellant={:.3}", vehicle.propellant);
+    vehicle.add_fuel(1000.0);
+    println!("propellant={:.3}", vehicle.propellant);
 }
