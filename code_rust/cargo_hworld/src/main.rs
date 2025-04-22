@@ -30,6 +30,9 @@ mod demo_gen_type;
 #[path = "./demo_traits.rs"]
 mod demo_traits;
 
+#[path = "./demo_lifetime.rs"]
+mod demo_lifetime;
+
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
@@ -51,4 +54,5 @@ fn main() {
     demo_struct::run(user);
     demo_gen_type::run(user);
     demo_traits::run(user);
+    demo_lifetime::run(user);
 }
