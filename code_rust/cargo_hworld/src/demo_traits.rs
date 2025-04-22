@@ -6,9 +6,13 @@ pub fn run(name: &str){
 
     traits_example();
     default_traits_example();
+    derive_traits_example();
     trait_bounds_example();
  }
 
+//PartialEq allows us to derive == operator without implementing it
+//PartialOrd allows us to derive > operator without implementing it
+#[derive(PartialEq, PartialOrd)] 
  struct Satellite {
     name: String,
     velocity: f64 // miles per second
@@ -88,5 +92,17 @@ fn trait_bounds_example (){
     print_type_debug(13.0);
     print_type_debug("thirteen");
     print_type_debug([13]);
+}
 
+fn derive_traits_example(){
+    let hubble = Satellite {
+        name: String::from("Hubble Telescope"),
+        velocity: 4.72
+    };
+    let gps = Satellite {
+        name: String::from("GPS"),
+        velocity: 2.42
+    };
+    println!("hubble == gps is {}", hubble == gps);
+    println!("hubble > gps is {}", hubble > gps);
 }
