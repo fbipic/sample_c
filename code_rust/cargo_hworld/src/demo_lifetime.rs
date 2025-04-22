@@ -36,10 +36,13 @@ fn lifetime_annotation_syntax_example() {
     result = best_fuel(&propellant1, &propellant2);
     println!("result is {}", result);
 
+    //This example will fail
+/*     
     let result2;
     {
         let propellant3 = String::from("LNG");
-        result2 = best_fuel(&propellant1, &propellant3); //THis fails
+        result2 = best_fuel(&propellant1, &propellant3);
     }
     println!("result2 is {}", result2);
+*/
 }
