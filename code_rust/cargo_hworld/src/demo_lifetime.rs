@@ -3,6 +3,7 @@ pub fn run(name: &str){
 
     borrow_checker_example();
     lifetime_annotation_syntax_example();
+    multiple_lifetime_annotation_example();
 }
 
 fn borrow_checker_example () {
@@ -45,4 +46,25 @@ fn lifetime_annotation_syntax_example() {
     }
     println!("result2 is {}", result2);
 */
+}
+
+//If we return always x, y lifetime should be different
+//We can remove it from previous definition but it cause some question or add another, as done below
+fn best_fuel_ax<'a, 'b>(x: &'a str, y: &'b str) -> &'a str  {  
+    if x.len() > y.len() {
+        x
+    } else {
+        x
+    }
+}
+
+
+fn multiple_lifetime_annotation_example() {
+    let result;
+    let propellant1 = String::from("RP-1");
+    {
+        let propellant2 = String::from("LNG");
+        result = best_fuel_ax(&propellant1, &propellant2);
+    }
+    println!("result is {}", result);
 }
