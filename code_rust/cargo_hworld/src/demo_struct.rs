@@ -5,6 +5,8 @@ pub fn run(name: &str){
     struct_method_example();
     associated_function_example();
     tuple_struct_example();
+
+    struct_challenge();
 }
 
 #[derive(Debug)] //Added to allow println macro to print structure in debug mode
@@ -22,6 +24,7 @@ impl Shuttle {
     fn add_fuel(&mut self, gallons: f64){
       self.propellant += gallons;
     }
+    //Associated function
     fn new(name: &str) -> Shuttle{
         Shuttle {
             name: String::from(name),
@@ -109,4 +112,30 @@ fn tuple_struct_example() {
     let coord = Point (3,4,5);
     let y = get_y(coord);
     println!("y={}", y);
+}
+
+struct Rectangle {
+    width : f64,
+    height: f64
+}
+
+impl Rectangle {
+    fn get_area (&self) -> f64 {
+        self.height * self.width
+    }
+    fn scale(&mut self, fact: f64) {
+        self.height *= fact;
+        self.width *= fact;
+    }
+    fn new(w: f64, h: f64) -> Rectangle {
+        Rectangle { width: w, height: h }
+    }
+}
+
+fn struct_challenge(){
+    let mut rect = Rectangle::new(1.2, 3.4);
+    assert_eq!(rect.get_area(), 4.08);
+    rect.scale(0.5);
+    assert_eq!(rect.get_area(), 1.02);
+    println!("Tests passed!");
 }
