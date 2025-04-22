@@ -2,6 +2,7 @@ pub fn run(name: &str){
     println!("==>Welcome to demo_gen_type {}!!!", String::from(name));
     gen_struct_example();
     gen_type_methods();
+    gen_function_example();
 }
 
 #[derive(Debug)]    
@@ -46,4 +47,17 @@ fn gen_type_methods(){
     println!("rect is {:?}", rect);
     println!("rect width={}", rect.get_width());
     println!("rect perimeter={}", rect.get_perimeter());
+}
+
+fn get_biggest<T: PartialOrd>(a:T, b:T) -> T {
+    //Using comparison with generic type it is not clear how to resolve it -> compiler error
+    if a > b {
+        a
+    } else {
+        b
+    }
+}
+
+fn gen_function_example(){
+    println!("biggest is {}", get_biggest(3.1, 5.1));
 }
