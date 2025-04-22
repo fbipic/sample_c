@@ -9,6 +9,7 @@ pub fn run(name: &str){
     derive_traits_example();
     trait_bounds_example();
     trait_multiple_bound_example();
+    trait_return_type_example();
  }
 
 //PartialEq allows us to derive == operator without implementing it
@@ -126,4 +127,14 @@ fn trait_multiple_bound_example() {
     compare_and_print(1.1, 1); 
 
     //compare_and_print(1.1, "one"); //String cannot be converted into number.
+}
+
+fn get_displayable() -> impl fmt::Display {
+    //13
+    "thirteen"
+    //[13] //Fails to compile
+}
+
+fn trait_return_type_example() {
+    println!("output is {}", get_displayable());
 }
