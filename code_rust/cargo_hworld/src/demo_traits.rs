@@ -8,6 +8,7 @@ pub fn run(name: &str){
     default_traits_example();
     derive_traits_example();
     trait_bounds_example();
+    trait_multiple_bound_example();
  }
 
 //PartialEq allows us to derive == operator without implementing it
@@ -105,4 +106,24 @@ fn derive_traits_example(){
     };
     println!("hubble == gps is {}", hubble == gps);
     println!("hubble > gps is {}", hubble > gps);
+}
+
+//fn compare_and_print<T, U>(a: T, b: U) {
+//fn compare_and_print<T: fmt::Display + PartialEq + From<U>, U: fmt::Display + PartialEq + Copy>(a: T, b: U) {
+fn compare_and_print<T, U>(a: T, b: U) 
+    where T: fmt::Display + PartialEq + From<U>, 
+          U: fmt::Display + PartialEq + Copy
+    {
+    if a == T::from(b) {
+        println!("{} is equal to {}", a, b);
+    } else {
+        println!("{} is NOT equal to {}", a, b);
+    }
+}
+
+fn trait_multiple_bound_example() {
+    compare_and_print(1.0, 1);
+    compare_and_print(1.1, 1); 
+
+    //compare_and_print(1.1, "one"); //String cannot be converted into number.
 }
