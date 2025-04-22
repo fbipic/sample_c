@@ -6,6 +6,8 @@ pub fn run(name: &str){
     gen_type_methods();
     gen_function_example();
     box_type_example();
+
+    box_sum_challenge();
 }
 
 #[derive(Debug)]    
@@ -89,4 +91,20 @@ fn box_type_example() {
     //Return ownership back to unboxed_vehicle
     let unboxed_vehicle: Shuttle = *boxed_vehicle;
     println!("unboxed_vehicle size on stack: {} bytes", mem::size_of_val(&unboxed_vehicle));
+}
+
+fn sum_boxes<T: std::ops::Add<Output = T>> (a:Box<T>, b:Box<T>) -> Box<T> {
+    Box::new(*a+*b)    
+}
+
+fn box_sum_challenge() {
+    let one = Box::new(1);
+    let two = Box::new(2);
+    assert_eq!(*sum_boxes(one, two), 3);
+    
+    let pi = Box::new(3.14159);
+    let e = Box::new(2.71828);
+    assert_eq!(*sum_boxes(pi, e), 5.85987);
+    
+    println!("Tests passed!");
 }
