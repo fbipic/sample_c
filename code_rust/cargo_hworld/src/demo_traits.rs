@@ -1,5 +1,7 @@
 use std::any;
-use std::fmt; //Required to display item in print_type function
+use std::fmt;
+
+use rand::distr::StandardUniform; //Required to display item in print_type function
 
 pub fn run(name: &str){
     println!("==>Welcome to demo_traits {}!!!", String::from(name));
@@ -10,6 +12,8 @@ pub fn run(name: &str){
     trait_bounds_example();
     trait_multiple_bound_example();
     trait_return_type_example();
+
+    display_traits_challenge();
  }
 
 //PartialEq allows us to derive == operator without implementing it
@@ -137,4 +141,18 @@ fn get_displayable() -> impl fmt::Display {
 
 fn trait_return_type_example() {
     println!("output is {}", get_displayable());
+}
+
+impl fmt::Display for Satellite {
+    fn fmt(&self, f: &mut fmt::Formatter<'_>) ->fmt::Result {
+        write!(f,"This is {} satellite, flying at {} miles per hour", self.name, self.velocity)
+    }
+}
+
+fn display_traits_challenge() {
+    let hubble = Satellite {
+        name: String::from("Hubble Telescope"),
+        velocity: 4.72
+    };
+    println!("hubble is {}", hubble);
 }
