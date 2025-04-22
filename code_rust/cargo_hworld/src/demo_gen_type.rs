@@ -1,12 +1,26 @@
 pub fn run(name: &str){
     println!("==>Welcome to demo_gen_type {}!!!", String::from(name));
     gen_struct_example();
+    gen_type_methods();
 }
 
 #[derive(Debug)]    
 struct Rectangle<T,U> {
     width: T,
     height: U
+}
+
+impl<T,U> Rectangle<T,U> {
+    fn get_width(&self) -> &T {
+        &self.width
+    }
+}
+
+//This methods works only with u8
+impl Rectangle<u8, u8> {
+    fn get_perimeter(&self) ->u8 {
+        2*self.width + 2*self.height
+    }
 }
 
 fn gen_struct_example() {
@@ -22,4 +36,14 @@ fn gen_struct_example() {
     };
     println!("rect2 is {:?}", rect2);
 
+}
+
+fn gen_type_methods(){
+    let rect = Rectangle {
+        width: 1u8, 
+        height: 3u8
+    };
+    println!("rect is {:?}", rect);
+    println!("rect width={}", rect.get_width());
+    println!("rect perimeter={}", rect.get_perimeter());
 }
