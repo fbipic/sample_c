@@ -27,6 +27,8 @@ mod demo_struct;
 #[path = "./demo_gen_type.rs"]
 mod demo_gen_type;
 
+#[path = "./demo_traits.rs"]
+mod demo_traits;
 
 // Main program
 fn main() {
@@ -48,4 +50,5 @@ fn main() {
     demo_io::run(user);
     demo_struct::run(user);
     demo_gen_type::run(user);
+    demo_traits::run(user);
 }
