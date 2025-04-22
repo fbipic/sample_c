@@ -43,7 +43,7 @@ impl Description for SpaceStation {
     }
 }
 impl Description for SpaceShuttle { 
-    
+
 }
 
 fn traits_example() {
@@ -65,6 +65,7 @@ fn default_traits_example() {
         name: String::from("Apollo 17"),
         crew_size: 3
     };
+    //In this case we use default method description
     println!("ss is {}", ss.describe());
 }
 
