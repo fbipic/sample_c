@@ -8,6 +8,7 @@ pub fn run(name: &str){
     multiple_lifetime_annotation_example();
     lifetime_elision_rules_example();
     struct_lifetime_annotation_example();
+    static_lifetime_example();
 }
 
 fn borrow_checker_example () {
@@ -145,5 +146,9 @@ fn struct_lifetime_annotation_example() {
     println!("msg is {}", sender_msg); 
     let sender_str = vehicle_str.send_transmission("Greetings from Moon!");
     println!("sender is {}", sender_str); 
+}
 
+fn static_lifetime_example() {
+    let s : &'static str = "Greetings from Neptune";
+    println!("s={}", s);
 }
