@@ -4,6 +4,7 @@ pub fn run(name: &str){
     borrow_checker_example();
     lifetime_annotation_syntax_example();
     multiple_lifetime_annotation_example();
+    lifetime_elision_rules_example();
 }
 
 fn borrow_checker_example () {
@@ -65,6 +66,33 @@ fn multiple_lifetime_annotation_example() {
     {
         let propellant2 = String::from("LNG");
         result = best_fuel_ax(&propellant1, &propellant2);
-    }
+    
     println!("result is {}", result);
+    }
+}
+
+fn lifetime_elision_rules_example() {
+    let message = String::from("Greetings from Earth!");
+    let first_word = get_first_word(&message);
+    println!("first_word is {}", first_word);
+}
+
+/*
+This declaration with lifetime was not necessary anymore due to lifetime elision rules:
+1. Each input that is a reference it is assigned an own lifetime
+2. If there is exactly one input lifetime, assign it to all output lifetime
+3. If there is a &self or &mut self input parameter, its lifetime will be assigned to all output lifetimes
+Required annotation when ambiguity
+*/
+//fn get_first_word<'a>(s: &'a str) -> &'a str { 
+fn get_first_word(s: &str) -> &str {
+    let bytes = s.as_bytes();
+
+    for (index, &item) in bytes.iter().enumerate() {
+        if item == b' ' {
+            return &s[..index]; // found a space!
+        }
+    }
+
+    &s // no spaces found; input is a single word
 }
