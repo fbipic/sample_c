@@ -33,6 +33,9 @@ mod demo_traits;
 #[path = "./demo_lifetime.rs"]
 mod demo_lifetime;
 
+#[path = "./demo_enums.rs"]
+mod demo_enums;
+
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
@@ -55,4 +58,5 @@ fn main() {
     demo_gen_type::run(user);
     demo_traits::run(user);
     demo_lifetime::run(user);
+    demo_enums::run(user);
 }
