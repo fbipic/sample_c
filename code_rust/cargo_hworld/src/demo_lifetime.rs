@@ -1,3 +1,5 @@
+use std::str::FromStr;
+
 pub fn run(name: &str){
     println!("==>Welcome to demo_lifetime {}!!!", String::from(name));
 
@@ -5,6 +7,7 @@ pub fn run(name: &str){
     lifetime_annotation_syntax_example();
     multiple_lifetime_annotation_example();
     lifetime_elision_rules_example();
+    struct_lifetime_annotation_example();
 }
 
 fn borrow_checker_example () {
@@ -95,4 +98,52 @@ fn get_first_word(s: &str) -> &str {
     }
 
     &s // no spaces found; input is a single word
+}
+
+struct Shuttle {
+    name: String
+}
+
+impl Shuttle {
+    fn send_transmission(&self, msg: &str) -> &str {
+        println!("Transmitting message: {}", msg);
+        &self.name
+    }
+}
+
+struct ShuttleStr<'a> {
+    name: &'a str
+}
+
+impl<'a, 'b> ShuttleStr<'a> {
+    //In this case third elision lifetime rule is used
+    fn send_transmission(&self, msg: &str) -> &str {
+        println!("Transmitting message: {}", msg);
+        self.name
+    }
+    //Require declaration of lifetime of msg
+    fn send_transmission_msg(&'a self, msg: &'b str) -> &'b str {
+        println!("Transmitting message: {}", msg);
+        msg
+    }
+}
+
+
+fn struct_lifetime_annotation_example() {
+    let vehicle = Shuttle {
+        name: String::from("Endeavour")
+    };
+
+    let sender = vehicle.send_transmission("Greetings from orbit!");
+    println!("sender is {}", sender); 
+
+    let vehicle_str = ShuttleStr {
+        name: "Discovery"
+    };
+
+    let sender_msg = vehicle_str.send_transmission_msg("Hello boys and girls!");
+    println!("msg is {}", sender_msg); 
+    let sender_str = vehicle_str.send_transmission("Greetings from Moon!");
+    println!("sender is {}", sender_str); 
+
 }
