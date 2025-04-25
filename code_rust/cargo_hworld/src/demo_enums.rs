@@ -7,6 +7,8 @@ pub fn run(name: &str){
     option_t_example();
     matching_t_example();
     if_let_syntax_example();
+
+    location_challenge();
 }
 
 #[derive(Debug)]
@@ -98,6 +100,31 @@ fn if_let_syntax_example () {
     This syntax can be substituted with syntax below
 */
     if let Some(13) = number {
-        println!("thirteen"),
+        println!("thirteen")
     }
+}
+
+enum Location {
+    Unknown, 
+    Anonymous,
+    Known(f64, f64) //latitute, longitude
+}
+
+impl Location {
+    fn display(&self) {
+        match *self {
+            Location::Unknown => println!("Unknown location defined"),
+            Location::Anonymous => println!("Anonymous location defined"),
+            Location::Known(lat, long) => println!("Location is on latitude={} longitude={}", lat, long)
+        }
+    }
+}
+
+fn location_challenge() {
+    let address = Location::Unknown;
+    address.display();
+    let address = Location::Anonymous;
+    address.display();
+    let address = Location::Known(28.608295, -80.604177);
+    address.display();
 }
