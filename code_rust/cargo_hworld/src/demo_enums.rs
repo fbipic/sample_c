@@ -4,6 +4,7 @@ pub fn run(name: &str){
     match_operator_example();
     match_with_default_example();
     enum_methods_example();
+    option_t_example();
 }
 
 #[derive(Debug)]
@@ -59,4 +60,17 @@ fn enum_methods_example() {
     let my_shape = Shape::Rectangle(1.2, 3.4);
     println!("my_shape = {:?}", my_shape);
     println!("my_shape perimeter = {}", my_shape.get_perimeter());
+}
+
+fn option_t_example() {
+    let countdown = [5, 4, 3, 2, 1];
+    //let number = countdown[5]; //Index is out of bounds
+    let number = countdown.get(5); //Returns Option enum None
+    let number = number.unwrap_or(&0) +1; //Added unwrap_or to return value if option is None
+    println!("number is {:?}", number);
+
+    let number = countdown.get(1); //Returns Option enum Some
+    let number = number.unwrap() +1; //Added unwrap because type is different, but it does not work in case of None
+    println!("number is {:?}", number); 
+
 }
