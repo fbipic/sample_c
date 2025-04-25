@@ -2,6 +2,7 @@ pub fn run(name: &str){
     println!("==>Welcome to demo_enums {}!!!", String::from(name));
     define_enum_example();
     match_operator_example();
+    match_with_default_example();
 }
 
 #[derive(Debug)]
@@ -25,4 +26,20 @@ fn match_operator_example(){
         Shape::Rectangle(w, h) => println!("This is a rectangle with width {} and hight {}", w, h),
         Shape::Triangle(a,b ,c ) => println!("This is a triangle with sides {} {} {}", a, b, c)
     } 
+}
+
+fn match_with_default_example() {
+    let my_number = 1u8;
+
+    let result = match my_number {
+        0 => "zero",
+        1 => "one",
+        2 => "two",
+        3 => "three",
+        //Wildcard pattern should be always at the end
+        _ => { println!("{} did not match", my_number);
+                "something else"
+        }
+    };
+    println!("result = {}", result);
 }
