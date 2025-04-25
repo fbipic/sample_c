@@ -1,6 +1,7 @@
 pub fn run(name: &str){
     println!("==>Welcome to demo_enums {}!!!", String::from(name));
     define_enum_example();
+    match_operator_example();
 }
 
 #[derive(Debug)]
@@ -13,4 +14,15 @@ enum Shape {
 fn define_enum_example() {
     let my_shape = Shape::Rectangle(1.2, 3.4);
     println!("my_shape = {:?}", my_shape);
+}
+
+fn match_operator_example(){
+    let my_shape = Shape::Rectangle(1.2, 3.4);
+    println!("my_shape = {:?}", my_shape);
+
+    match my_shape {
+        Shape::Circle(r) => println!("This is a circle with radius {}", r),
+        Shape::Rectangle(w, h) => println!("This is a rectangle with width {} and hight {}", w, h),
+        Shape::Triangle(a,b ,c ) => println!("This is a triangle with sides {} {} {}", a, b, c)
+    } 
 }
