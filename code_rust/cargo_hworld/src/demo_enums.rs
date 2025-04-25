@@ -6,6 +6,7 @@ pub fn run(name: &str){
     enum_methods_example();
     option_t_example();
     matching_t_example();
+    if_let_syntax_example();
 }
 
 #[derive(Debug)]
@@ -85,4 +86,18 @@ fn matching_t_example() {
     };
     println!("number is {:?}", number);
 
+}
+
+fn if_let_syntax_example () {
+    let number = Some(13);
+/* 
+    match number {
+        Some(13) => println!("thirteen"),
+        _ => ()
+    }
+    This syntax can be substituted with syntax below
+*/
+    if let Some(13) = number {
+        println!("thirteen"),
+    }
 }
