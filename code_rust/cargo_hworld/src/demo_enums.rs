@@ -5,6 +5,7 @@ pub fn run(name: &str){
     match_with_default_example();
     enum_methods_example();
     option_t_example();
+    matching_t_example();
 }
 
 #[derive(Debug)]
@@ -72,5 +73,16 @@ fn option_t_example() {
     let number = countdown.get(1); //Returns Option enum Some
     let number = number.unwrap() +1; //Added unwrap because type is different, but it does not work in case of None
     println!("number is {:?}", number); 
+
+}
+
+fn matching_t_example() {
+    let countdown = [5, 4, 3, 2, 1];   
+    let number = countdown.get(5);
+    let number = match number {
+        Some(number) => number +1,
+        None => 0
+    };
+    println!("number is {:?}", number);
 
 }
