@@ -3,6 +3,7 @@ pub fn run(name: &str){
     define_enum_example();
     match_operator_example();
     match_with_default_example();
+    enum_methods_example();
 }
 
 #[derive(Debug)]
@@ -42,4 +43,20 @@ fn match_with_default_example() {
         }
     };
     println!("result = {}", result);
+}
+
+impl Shape {
+    fn get_perimeter(&self) -> f64 {
+        match *self {
+            Shape::Circle(r) => r * 2.0 * std::f64::consts::PI,
+            Shape::Triangle(a, b, c) => a+b+c,
+            Shape::Rectangle(w, h ) => 2.0*w + 2.0*h
+        }
+    }
+}
+
+fn enum_methods_example() {
+    let my_shape = Shape::Rectangle(1.2, 3.4);
+    println!("my_shape = {:?}", my_shape);
+    println!("my_shape perimeter = {}", my_shape.get_perimeter());
 }
