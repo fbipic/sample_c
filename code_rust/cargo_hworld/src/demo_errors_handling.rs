@@ -7,6 +7,7 @@ pub fn run(name: &str){
     unrecoverable_error_example();
     recoverable_error_example();
     match_result_example();
+    propagate_error_example();
 }
 
 //Recoverable errors -> enum Result<T,E>
@@ -47,4 +48,31 @@ fn match_result_example() {
     };
 
     println!("Contents is {:?}", contents); //output of enum Result is displayed
+}
+
+fn read_and_combine(f1: &str, f2: &str) -> Result<String, io::Error> {
+    let mut s1 = match fs::read_to_string(f1) {
+        Ok(s) => s,
+        Err(e) => return Err(e)
+    };
+/* 
+    let s2 = match fs::read_to_string(f2) {
+        Ok(s) => s,
+        Err(e) => return Err(e)
+    };
+    This type of handling is so common that can be substituted as below
+*/
+    let s2 = fs::read_to_string(f2)?;
+    s1.push('\n');
+    s1.push_str(&s2);
+    Ok(s1)
+}
+
+fn propagate_error_example() {
+    let result = read_and_combine("files/planets.txt", "files/dwarf_planets.txt");
+    match result {
+        Ok(s) => println!("result is...\n{}", s),
+        Err(e) => println!("There was an error: {}", e)
+    };
+
 }
