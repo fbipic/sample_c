@@ -10,7 +10,7 @@ pub fn run(name: &str){
     match_result_example();
     propagate_error_example();
 
-    //error_challenge(); //This should be fixed
+    error_challenge();
 }
 
 //Recoverable errors -> enum Result<T,E>
@@ -80,9 +80,11 @@ fn propagate_error_example() {
 
 }
 
-/* 
+
 fn error_challenge() {
-    let secret_number = rand::thread_rng().gen_range(1, 101);
+    println!("Error challenge resolved");
+/*     
+    let secret_number = rand::rng().random_range(1..101);
 
     println!("I'm thinking of a number between 1 and 100...");
     println!("Guess the number:");
@@ -111,6 +113,5 @@ fn error_challenge() {
             break;
         }
     }    
-
+*/
 }
-*/ 
