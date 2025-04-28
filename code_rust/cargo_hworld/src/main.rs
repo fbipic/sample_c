@@ -39,6 +39,9 @@ mod demo_enums;
 #[path = "./demo_errors_handling.rs"]
 mod demo_errors_handling;
 
+#[path = "./demo_collectors.rs"]
+mod demo_collectors;
+
 // Main program
 fn main() {
     println!("Hello, RUST world with CARGO!");
@@ -63,4 +66,5 @@ fn main() {
     demo_lifetime::run(user);
     demo_enums::run(user);
     demo_errors_handling::run(user);
+    demo_collectors::run(user);
 }
